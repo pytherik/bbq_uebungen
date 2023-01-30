@@ -1,0 +1,40 @@
+* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+
+body {
+	background-color: #aaa;
+	font-size: 1rem;
+}
+
+.container {
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	justify-content: space-around;
+}
+
+.panel {
+	display: flex;
+	flex-direction: column;
+}
+
+.panelRow {
+	display: flex;
+	flex-direction: row;
+}
+
+.key {
+	margin: 2px;
+	text-align: center;
+	width: 3%;
+	height: 3%;
+	font-size: 3rem;
+	border: 1px solid orange;
+}
+
+.big {
+	width: 6%;
+}
