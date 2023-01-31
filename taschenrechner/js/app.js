@@ -1,17 +1,69 @@
 const key     = document.querySelectorAll('.key');
-const display = document.getElementById('display')
-const operators = ['+', '-', '/', 'X', '=', '^'];
-let nums = [];
+const result = document.getElementById('result');
+const signs = document.getElementById('signs');
+
+let termsArray = [];
 let operator = '';
-let num = '';
-let output = '';
-let len = 0;
+let term = '';
 
-display.innerHTML = 0;
+result.innerHTML = 0;
 
-function calculate(nums, operator) {
-  let a = parseFloat(nums[0]);
-  let b = parseFloat(nums[1]);
+for (let i = 0; i < key.length; i++) {
+  key[i].addEventListener('click', () => {
+    input = key[i].innerHTML.trim();
+    if (input.match('[0-9]')) {
+      console.log(operator);
+      if (operator != '') {
+        term = input;
+      } else {
+        term += input;
+      }
+      result.innerHTML = term;
+    } else if (input == 'c') {
+      termsArray = [];
+      term = '';
+      operator = '';
+      result.innerHTML = 0;
+    } else if (input == 'ce') {
+      if (term != '') {
+        term = term.slice(0, -1);
+        result.innerHTML = term;
+      }
+    } else {
+      if (input != '=' && term != '') {
+        termsArray.push(term);
+        if (termsArray.length > 1) {
+          term = calculate(operator, termsArray);
+          result.innerHTML = term;
+          termsArray = [term];
+        } else {
+          term = '';
+        }
+        operator = input;
+        signs.innerHTML = operator;
+      } else if (input == '=' && operator != '' && term != '') {
+        termsArray.push(term);
+        term = calculate(operator, termsArray);
+        result.innerHTML = term;
+        termsArray = [];
+        operator = '=';
+      } else {
+        termsArray.push(term);
+        term = '';
+        if (termsArray.length > 1) {
+          termsArray = [calculate(operator, termsArray)];
+          result.innerHTML = termsArray[0];
+        }
+      }
+    }
+    console.log(term, termsArray);
+    }
+  )
+}
+  
+function calculate(operator, termsArray) {
+  let a = parseFloat(termsArray[0]);
+  let b = parseFloat(termsArray[1]);
   let result = 0;
   switch (operator) {
     case '+':
@@ -20,49 +72,15 @@ function calculate(nums, operator) {
     case '-':
       result = a - b;
       break;
-    case 'X':
+    case '×':
       result = a * b;
       break;
-    case '/':
+    case '÷':
       result = a / b;
       break;
     case '^':
       result = a ** b;
       break;
     }
-  return result;
+  return (result.toString()).slice(0, 10);
 }
-
-for (let i = 0; i < key.length; i++) {
-  key[i].addEventListener('click', () => {
-    input = key[i].innerHTML.trim();
-    if (!operators.includes(input)) {
-      num += input;
-    } else {
-      console.log('before push: ', nums)
-      if (!num == '') {
-        nums.push(num);
-      }
-      if (nums.length > 1) {
-        output = calculate(nums, operator);
-        nums = [output];
-      }
-      operator = input;
-      num = '';
-    }
-    if (input == 'c') {
-      nums = [];
-      input = '';
-      output = '';
-      num = '';
-    }
-    if (input == '=') {
-      nums = [output];
-      input = '';
-    }
-    output += input;
-    display.innerHTML = output;
-    }
-  )
-}
-  

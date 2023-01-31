@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2&display=swap');
+
 * {
 		margin: 0;
 		padding: 0;
@@ -6,35 +8,52 @@
 
 body {
 	background-color: #555;
+	font-family: 'Exo 2', Arial, Helvetica, sans-serif;
 	font-size: 1rem;
 }
 
 .container {
 	margin-top: 5%;
-	width: 100vw;
-	height: 100vh;
+	/* width: 100vw;
+	height: 100vh; */
 	display: flex;
 	justify-content: space-around;
 }
 
 .panel {
+	background-color: #333;
 	display: flex;
 	flex-direction: column;
+	height: 65vh;
+	margin-top: 3rem;
+	padding: 2rem .5rem;
+	border: 1px solid #C5894066;
+	border-radius: .5rem;
 }
 
+.logo {
+	color: #ddd;
+}
 .panelRow {
 	display: flex;
 	flex-direction: row;
 }
 
 .display {
+	padding: .3rem .5rem;
+	margin: .5rem 0;
 	background-color: #666;
 	width: 17rem;
 	height: 4rem;
 	border: 1px solid green;
 	border-radius: .5rem;
 	text-align: right;
-	font-size: 2rem;
+	font-size: 2.5rem;
+}
+
+#signs {
+	float: left;
+	font-size: 1.5rem;
 }
 
 .key {
@@ -45,11 +64,11 @@ body {
 	width: 4rem;
 	height: 4rem;
 	font-size: 3rem;
-	border: 1px solid orange;
+	border: 1px solid #C5894066;
 	border-radius: .5rem;;
 }
 
 .big {
-	margin: 4px;
-	width: 8rem;
+	margin: 2px;
+	width: 8.3rem;
 }
