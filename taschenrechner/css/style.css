@@ -5,11 +5,12 @@
 	}
 
 body {
-	background-color: #aaa;
+	background-color: #555;
 	font-size: 1rem;
 }
 
 .container {
+	margin-top: 5%;
 	width: 100vw;
 	height: 100vh;
 	display: flex;
@@ -26,15 +27,29 @@ body {
 	flex-direction: row;
 }
 
+.display {
+	background-color: #666;
+	width: 17rem;
+	height: 4rem;
+	border: 1px solid green;
+	border-radius: .5rem;
+	text-align: right;
+	font-size: 2rem;
+}
+
 .key {
+	background-color: #444;
+	color: #e0f5a5;
 	margin: 2px;
 	text-align: center;
-	width: 3%;
-	height: 3%;
+	width: 4rem;
+	height: 4rem;
 	font-size: 3rem;
 	border: 1px solid orange;
+	border-radius: .5rem;;
 }
 
 .big {
-	width: 6%;
+	margin: 4px;
+	width: 8rem;
 }
