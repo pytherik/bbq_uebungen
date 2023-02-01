@@ -47,6 +47,7 @@ for (let i = 0; i < key.length; i++) {
         result.innerHTML = term;
         termsArray = [];
         operator = '=';
+        signs.innerHTML = operator;
       } else {
         termsArray.push(term);
         term = '';
