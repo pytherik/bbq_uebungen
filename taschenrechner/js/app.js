@@ -24,6 +24,7 @@ for (let i = 0; i < key.length; i++) {
       term = '';
       operator = '';
       result.innerHTML = 0;
+      signs.innerHTML = '';
     } else if (input == 'ce') {
       if (term != '') {
         term = term.slice(0, -1);
