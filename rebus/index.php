@@ -65,7 +65,10 @@
                 echo "<h2>Du musst etwas auswählen!</h2>";
               } else {
                 $inhalt = $_POST['antwort_gruppe'];
-                echo "<h2>$inhalt !!!!!</h2>";
+                if ($inhalt == 'falsch'){
+                  echo "<h2>$inhalt 🤮 😡 🥴</h2>";
+                } else 
+                echo "<h2>$inhalt 🍬 🍺 🍰</h2>";
               }
             }
             ?>
