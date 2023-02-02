@@ -14,22 +14,24 @@ var outputG = document.getElementById("outG");
 var outputB = document.getElementById("outB");
 
 
-
 red.oninput = function () {
   r = this.value;
-  outputR.innerHTML = `00${r}`.slice(-3);
+  let rval = `00${r}`.slice(-3);
+  outputR.innerHTML = `R : ${rval}`;
   changeColor('r', r);
 }
 
 green.oninput = function () {
   g = this.value;
-  outputG.innerHTML = `00${g}`.slice(-3);
+  let gval = `00${g}`.slice(-3);
+  outputR.innerHTML = `G : ${gval}`;
   changeColor('g', g);
 }
 
 blue.oninput = function () {
   b = this.value;
-  outputB.innerHTML = `00${b}`.slice(-3);
+  let bval = `00${b}`.slice(-3);
+  outputR.innerHTML = `B : ${bval}`;
   changeColor('b', b);
 }
 
@@ -51,3 +53,25 @@ const changeColor = (color, val) => {
   ctx.fillStyle = (`rgba(${r}, ${g}, ${b}, 1)`);
   ctx.fill();
   }
+  
+(() => {
+  
+  r = Math.floor(Math.random() * 255);
+  let rval = `00${r}`.slice(-3);
+  red.value = r;
+  outputR.innerHTML = `R : ${rval}`;
+  changeColor('r', r);
+  
+  g = Math.floor(Math.random() * 255);
+  let gval = `00${g}`.slice(-3);
+  green.value = g;
+  outputG.innerHTML = `G : ${gval}`;
+  changeColor('g', g);
+
+  b = Math.floor(Math.random() * 255);
+  let bval = `00${b}`.slice(-3);
+  blue.value = b;
+  outputB.innerHTML = `B : ${bval}`;
+  changeColor('b', b);
+})()
+    
