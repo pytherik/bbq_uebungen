@@ -1,11 +1,9 @@
  <!DOCTYPE html>
  <html>
-
  <head>
    <title>Rebus</title>
    <link rel="stylesheet" href="public/css/style.css">
  </head>
-
  <body>
    <div class="container">
      <table>
@@ -38,7 +36,6 @@
             );
           //: name variable for data-transfer in $_POST  
             $name = 'antwort_gruppe';
-
           //: create html table rows for answers
             foreach ($antworten as $key => $value) {
               echo "
@@ -75,9 +72,7 @@
          </td>
        </tr>
        </form>
-
      </table>
    </div>
  </body>
-
  </html>
