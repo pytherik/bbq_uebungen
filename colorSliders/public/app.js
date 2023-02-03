@@ -24,14 +24,14 @@ red.oninput = function () {
 green.oninput = function () {
   g = this.value;
   let gval = `00${g}`.slice(-3);
-  outputR.innerHTML = `G : ${gval}`;
+  outputG.innerHTML = `G : ${gval}`;
   changeColor('g', g);
 }
 
 blue.oninput = function () {
   b = this.value;
   let bval = `00${b}`.slice(-3);
-  outputR.innerHTML = `B : ${bval}`;
+  outputB.innerHTML = `B : ${bval}`;
   changeColor('b', b);
 }
 
