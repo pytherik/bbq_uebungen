@@ -33,11 +33,14 @@ const react = (start) => {
 
     //: farbliche Bewertung der Reaktionszeit
     if (result < 300) {
-      buzzer.style.backgroundColor = '#82CD4766';
+      buzzer.style.backgroundColor = '#82CD47bb';
+      restart.style.backgroundColor = '#82CD4755';
     } else if (result < 800) {
-      buzzer.style.backgroundColor = '#F9941766';
+      buzzer.style.backgroundColor = '#F99417bb';
+      restart.style.backgroundColor = '#F9941755';
     } else {
-      buzzer.style.backgroundColor = '#C85C8E66';
+      buzzer.style.backgroundColor = '#FF0032bb';
+      restart.style.backgroundColor = '#FF003255';
     }
     buzzer.innerHTML = `${result / 1000} sec`;
     restart.style.visibility='visible';
