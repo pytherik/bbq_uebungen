@@ -17,4 +17,11 @@ $c = new Calc(3,5);
 
 echo $c->add()."\n";
 
+$a = 0;
+$b = 10;
+for($a;$a<$b; ++$a) {
+  echo $a;
+}
+echo $a;
+echo "<br><input type='number' name='start'>"
 ?>

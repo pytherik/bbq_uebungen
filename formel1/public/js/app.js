@@ -1,0 +1,49 @@
+const signs = document.querySelectorAll('.sign');
+const buzzer = document.querySelector('#buzzer');
+const restart = document.querySelector('#restart');
+let i = 0;
+//: extra Zufallszeit berechnen
+const flexTime = Math.floor(Math.random() * 2000);
+
+//: rotschalten mit 0.5s Verzögerung
+const timer = setInterval(() => {
+  signs[i].classList.add('turnRed');
+  i++;
+  if (i == 5) {
+    clearInterval(timer);
+  };
+}, 1000);
+
+//: grün schalten nach 3sek + zufälliger Zeit
+setTimeout(() => {
+  signs.forEach((sign) => {
+    sign.classList.remove('turnRed');
+    sign.classList.add('turnGreen');
+    // sign.style.backgroundColor = '#82CD4766';
+  })
+  //: Aktivierung Reaktionsbutton nach 3sek mit Startzeit
+  react(new Date().getTime());
+}, 5100 + flexTime)
+
+//: Messung der Reaktionszeit
+const react = (start) => {
+  buzzer.addEventListener('click', () => {
+    const end = new Date().getTime();
+    let result = end - start;
+
+    //: farbliche Bewertung der Reaktionszeit
+    if (result < 300) {
+      buzzer.style.backgroundColor = '#82CD4766';
+    } else if (result < 800) {
+      buzzer.style.backgroundColor = '#F9941766';
+    } else {
+      buzzer.style.backgroundColor = '#C85C8E66';
+    }
+    buzzer.innerHTML = `${result / 1000} sec`;
+    restart.style.visibility='visible';
+  })  
+}
+
+restart.addEventListener('click', () => {
+  location.reload();
+})
