@@ -58,6 +58,7 @@ button {
 #buzzer {
   /* margin-top: 10%; */
   width: 35rem;
+  visibility: hidden;
   font-size: 3rem;
   height: 10rem;
   border-radius: 1rem;

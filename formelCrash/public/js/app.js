@@ -23,7 +23,9 @@ awaitStart.volume = 0.6;
   restart.style.visibility='visible';
   restart.innerHTML = 'Start!'
   restart.addEventListener('click', () => {
-    restart.style.visibility='hidden';
+    restart.style.visibility = 'hidden';
+    buzzer.style.visibility='visible';
+    
     awaitStart.play();
     
     
