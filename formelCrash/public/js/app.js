@@ -1,20 +1,20 @@
-//: Konstanten für DOM Elemente : signs -> Ampel divs; buzzer, restart -> buttons
+//: Konstanten für DOM (HTML) Elemente : signs -> Ampel divs; buzzer, restart -> buttons
 const signs = document.querySelectorAll('.sign');
 const buzzer = document.querySelector('#buzzer');
 const restart = document.querySelector('#restart');
 
-//: Instanzen von Audio() als Konstanten
+//: Sound-Instanzen von Audio() als Konstanten
 const beep = new Audio('public/sounds/beepS.mp3');
 const bleep = new Audio('public/sounds/bleepS.mp3');
 const oohh = new Audio('public/sounds/oohh.mp3');
 const medium = new Audio('public/sounds/medium.mp3');
 const boo = new Audio('public/sounds/boo.mp3');
 const diss = new Audio('public/sounds/diss.mp3');
-const throttle = new Audio('public/sounds/start.mp3');
+const fullThrottle = new Audio('public/sounds/start.mp3');
 const awaitStart = new Audio('public/sounds/awaitStart.mp3');
 
-//: throttle und awaitStart sollen leiser sein
-throttle.volume = 0.5;
+//: fullThrottle und awaitStart sollen leiser sein
+fullThrottle.volume = 0.4;
 awaitStart.volume = 0.6;
 
 //: Einkapselung in Start-Funktion zur Fehlervermeidung bei Audioverwendung 
@@ -27,8 +27,7 @@ awaitStart.volume = 0.6;
     buzzer.style.visibility='visible';
     
     awaitStart.play();
-    
-    
+        
     //: extra Zufallszeit berechnen
     const flexTime = Math.floor(Math.random() * 2000);
     
@@ -45,7 +44,6 @@ awaitStart.volume = 0.6;
         clearInterval(timer);
       };
     }, 1000);
-    
     
     //: grün schalten nach 3sek + zufälliger Zeit
     const launch = setTimeout(() => {
@@ -72,7 +70,7 @@ awaitStart.volume = 0.6;
         let result = end - start;
         dissOnOf('off');
         awaitStart.pause();
-        throttle.play();
+        fullThrottle.play();
         //: farbliche Bewertung der Reaktionszeit
         if (result < 300) {
           buzzer.style.backgroundColor = '#82CD47bb';
@@ -98,7 +96,7 @@ awaitStart.volume = 0.6;
     //: zusätzlicher EventListener zur Behandlung übereilten Klickverhaltens
       buzzer.addEventListener('click' , () => {
         awaitStart.pause();
-        throttle.play();
+        fullThrottle.play();
         dissOnOf();
         buzzer.style.backgroundColor = '#ff0032bb'
         buzzer.innerHTML = 'disqualified'
