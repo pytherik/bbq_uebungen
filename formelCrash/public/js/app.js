@@ -5,7 +5,7 @@ let i = 0;
 //: extra Zufallszeit berechnen
 const flexTime = Math.floor(Math.random() * 2000);
 
-//: rotschalten mit 0.5s Verzögerung
+//: rotschalten mit 1s Verzögerung
 const timer = setInterval(() => {
   signs[i].classList.add('turnRed');
   i++;
@@ -13,13 +13,13 @@ const timer = setInterval(() => {
     clearInterval(timer);
   };
 }, 1000);
-
+ 
+ 
 //: grün schalten nach 3sek + zufälliger Zeit
-setTimeout(() => {
+const launch = setTimeout(() => {
   signs.forEach((sign) => {
     sign.classList.remove('turnRed');
     sign.classList.add('turnGreen');
-    // sign.style.backgroundColor = '#82CD4766';
   })
   //: Aktivierung Reaktionsbutton nach 3sek mit Startzeit
   react(new Date().getTime());
@@ -44,8 +44,18 @@ const react = (start) => {
     }
     buzzer.innerHTML = `${result / 1000} sec`;
     restart.style.visibility='visible';
+    restart.innerHTML = 'Ich will nochmal!'
   })  
 }
+
+buzzer.addEventListener('click' , () => {
+  buzzer.style.backgroundColor = '#ff0032bb'
+  buzzer.innerHTML = 'disqualified'
+  clearInterval(timer);
+  clearTimeout(launch);
+  restart.style.visibility='visible';
+  restart.innerHTML = 'Schwachkopf!'
+})
 
 restart.addEventListener('click', () => {
   location.reload();
