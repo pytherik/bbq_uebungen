@@ -14,7 +14,7 @@ const throttle = new Audio('public/sounds/start.mp3');
 const awaitStart = new Audio('public/sounds/awaitStart.mp3');
 
 //: throttle und awaitStart sollen leiser sein
-throttle.volume = 0.7;
+throttle.volume = 0.5;
 awaitStart.volume = 0.6;
 
 //: Einkapselung in Start-Funktion zur Fehlervermeidung bei Audioverwendung 
