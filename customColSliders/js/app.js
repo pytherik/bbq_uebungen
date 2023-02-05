@@ -1,34 +1,31 @@
 const container = document.querySelector('.slider-container');
+
 const progressR = document.querySelector('#red-value');
 const progressG = document.querySelector('#green-value');
 const progressB = document.querySelector('#blue-value');
+
 const sliderR = document.querySelector('#red-shape');
 const sliderG = document.querySelector('#green-shape');
 const sliderB = document.querySelector('#blue-shape');
+
 const val_R = document.querySelector('#val_R');
 const val_G = document.querySelector('#val_G');
 const val_B = document.querySelector('#val_B');
 
-let r = 50;
-let g = 50;
-let b = 50;
+let r;
+let g;
+let b;
 
 const canv = document.getElementById("canv");
 let ctx = canv.getContext("2d");
 
-
 const styles = window.getComputedStyle(container);
-const maxWidth = styles.width.slice(0,-2);
+
+const maxWidth = styles.width.slice(0, -2);
 const valFactor = 255 / maxWidth;
 
 let sliderValue = 50;
-progressR.style.width = `50px`;
-progressG.style.width = `50px`;
-progressB.style.width = `50px`;
-val_R.innerHTML = `00${sliderValue}`.slice(-3);
-val_G.innerHTML = `00${sliderValue}`.slice(-3);
-val_B.innerHTML = `00${sliderValue}`.slice(-3);
-
+// 
 let mouseDownR = false;
 let mouseDownG = false;
 let mouseDownB = false;
@@ -64,6 +61,20 @@ sliderR.addEventListener('mouseup', () => {
   mouseDownR = false;
 })
 
+//: RED mousewheel
+sliderR.addEventListener('wheel', (e) => {
+  e.preventDefault();
+  r = Math.round(parseInt(progressR.style.width.slice(0, -2)) * valFactor);
+  
+  if (e.deltaY == 120 && r > 0) {
+    r -= 1;
+  } else if (r < 255) {
+    r += 1;
+  }
+  changeColor('r', r);
+  val_R.innerHTML = r;
+  progressR.style.width = `${Math.round(r / valFactor)}px`
+})
 
 
 //: GREEN click
@@ -88,13 +99,28 @@ sliderG.addEventListener('mousemove', (e) => {
     g = `00${sliderValue}`.slice(-3);
     changeColor('g', g);
     val_G.innerHTML = g;
-      progressG.style.width = `${e.offsetX}px`;
+    progressG.style.width = `${e.offsetX}px`;
   }
 })
 
 //: GREEN mouseup
 sliderG.addEventListener('mouseup', () => {
   mouseDownG = false;
+})
+
+//: GREEN mousewheel
+sliderG.addEventListener('wheel', (e) => {
+  e.preventDefault();
+  g = Math.round(parseInt(progressG.style.width.slice(0, -2)) * valFactor);
+  
+  if (e.deltaY == 120 && g > 0) {
+    g -= 1;
+  } else if (g < 255) {
+    g += 1;
+  }
+  changeColor('g', g);
+  val_G.innerHTML = g;
+  progressG.style.width = `${Math.round(g / valFactor)}px`
 })
 
 
@@ -129,6 +155,22 @@ sliderB.addEventListener('mouseup', () => {
   mouseDownB = false;
 })
 
+//: BLUE mousewheel
+sliderB.addEventListener('wheel', (e) => {
+  e.preventDefault();
+  b = Math.round(parseInt(progressB.style.width.slice(0, -2)) * valFactor);
+  
+  if (e.deltaY == 120 && b > 0) {
+    b -= 1;
+  } else if (b < 255) {
+    b += 1;
+  }
+  changeColor('b', b);
+  val_B.innerHTML = b;
+  progressB.style.width = `${Math.round(b / valFactor)}px`
+})
+
+
 const changeColor = (color, val) => {
   switch (color) {
     case 'r':
@@ -153,15 +195,15 @@ const changeColor = (color, val) => {
   b = Math.floor(Math.random() * 256);
   
   changeColor('r', r);
-  val_R.innerHTML = r;
-  progressR.style.width = `${r}}px`;
+  val_R.innerHTML = `00${r}`.slice(-3);
+  progressR.style.width = `${r / valFactor}px`;
   
   changeColor('g', g);
-  val_G.innerHTML = g;
-  progressG.style.width = `${g}px`;
+  val_G.innerHTML = `00${g}`.slice(-3);
+  progressG.style.width = `${g / valFactor}px`;
   
   changeColor('b', b);
-  val_B.innerHTML = b;
-  progressB.style.width = `${b}px`;
+  val_B.innerHTML = `00${b}`.slice(-3);
+  progressB.style.width = `${b / valFactor}px`;
 
 })()
