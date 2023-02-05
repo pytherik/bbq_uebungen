@@ -12,6 +12,8 @@ const val_R = document.querySelector('#val_R');
 const val_G = document.querySelector('#val_G');
 const val_B = document.querySelector('#val_B');
 
+const service = document.querySelector('.service');
+
 let r;
 let g;
 let b;
@@ -184,9 +186,13 @@ const changeColor = (color, val) => {
       break;
   }
   ctx.beginPath();
-  ctx.rect(0, 0, 400, 400);
+  ctx.rect(0, 0, maxWidth, maxWidth);
   ctx.fillStyle = (`rgba(${r}, ${g}, ${b}, 1)`);
   ctx.fill();
+  const xr = r.toString(16).slice(-2);
+  const xg = g.toString(16).slice(-2);
+  const xb = b.toString(16).slice(-2);
+  service.innerHTML = `rgb(${r}, ${g}, ${b})            #${xr}${xg}${xb}`
 }
 
 (() => {

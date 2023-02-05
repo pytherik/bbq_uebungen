@@ -16,15 +16,21 @@ body {
 }
 
 canvas {
-	border: 1px solid #ddd;
+	/* border: 1px solid #ddd; */
 }
 
 pre {
 	user-select: none;
 }
 
-span {
+/* span {
 	user-select: auto;
+} */
+
+.service {
+	user-select: auto;
+	margin-top: 5%;
+	font-size: 1.4rem;
 }
 
 .container {
@@ -36,11 +42,12 @@ span {
 
 .sliders {
 	background-color: #bbbbbbbb;
-	border: 1px solid #444;
+	/* border: 1px solid #444; */
 	padding: 1rem .5rem 2rem;
 	margin-top: 1rem;
-	border-radius: 2rem;
+	border-radius: 1rem;
 }
+
 .slider-container {
 	cursor: pointer;
 	display: flex;
@@ -49,7 +56,7 @@ span {
 	align-items: center;
 	margin:0 auto;
 	margin-top: 1%;
-	width: 400px;
+	width: 500px;
 }
 
 .slider-shape {
