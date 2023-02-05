@@ -37,8 +37,6 @@ body {
 }
 
 .slider-thumb {
-	/* display: block;
-	float: left; */
 	margin-left: -3%;
 	margin-top: -2px;
 	width: 15px;
