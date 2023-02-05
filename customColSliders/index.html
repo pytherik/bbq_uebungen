@@ -11,34 +11,33 @@
 <body>
   <div class="container">
     <canvas id="canv" width="400" height="400"></canvas>
-    <div id="slider1" class="slider-container">
-      <div>
-        <span>Red : </span>
-        <span id="val_R"></span>
+    <div class="sliders">
+      <div id="slider1" class="slider-container">
+        <div>
+          <pre>Red  : <span id="val_R"></span></pre>
+        </div>
+        <div id="red-shape" class="slider-shape">
+          <div id="red-value" class="slider-value">
+          </div>    
+        </div>
       </div>
-      <div id="red-shape" class="slider-shape">
-        <div id="red-value" class="slider-value">
-        </div>    
+      <div id="slider2" class="slider-container">
+        <div>
+          <pre>Green: <span id="val_G"></span></pre>
+        </div>
+        <div id="green-shape" class="slider-shape">
+          <div id="green-value" class="slider-value">
+          </div>    
+        </div>
       </div>
-    </div>
-    <div id="slider2" class="slider-container">
-      <div>
-        <span>Green: </span>
-        <span id="val_G"></span>
-      </div>
-      <div id="green-shape" class="slider-shape">
-        <div id="green-value" class="slider-value">
-        </div>    
-      </div>
-    </div>
-    <div id="slider3" class="slider-container">
-      <div>
-        <span>Blue: </span>
-        <span id="val_B"></span>
-      </div>
-      <div id="blue-shape" class="slider-shape">
-        <div id="blue-value" class="slider-value">
-        </div>    
+      <div id="slider3" class="slider-container">
+        <div>
+          <pre>Blue : <span id="val_B"></span></pre>
+        </div>
+        <div id="blue-shape" class="slider-shape">
+          <div id="blue-value" class="slider-value">
+          </div>    
+        </div>
       </div>
     </div>
   </div>  

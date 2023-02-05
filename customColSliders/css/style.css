@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap');
 * {
 		margin: 0;
 		padding: 0;
@@ -5,25 +6,41 @@
 	}
 
 body {
-	background-color: #bbb;
+	background-color: #444;
+	background-image: url('../images/colors.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
 	font-size: 1rem;
+	font-family: 'Source Code Pro', Arial, Helvetica, sans-serif;
 }
 
 canvas {
 	border: 1px solid #ddd;
 }
 
-span {
+pre {
 	user-select: none;
 }
 
+span {
+	user-select: auto;
+}
+
 .container {
-	margin-top: 5%;
+	margin-top: 3%;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
+.sliders {
+	background-color: #bbbbbbbb;
+	border: 1px solid #444;
+	padding: 1rem .5rem 2rem;
+	margin-top: 1rem;
+	border-radius: 2rem;
+}
 .slider-container {
 	cursor: pointer;
 	display: flex;

@@ -72,7 +72,7 @@ sliderR.addEventListener('wheel', (e) => {
     r += 1;
   }
   changeColor('r', r);
-  val_R.innerHTML = r;
+  val_R.innerHTML = `00${r}`.slice(-3);
   progressR.style.width = `${Math.round(r / valFactor)}px`
 })
 
@@ -119,7 +119,7 @@ sliderG.addEventListener('wheel', (e) => {
     g += 1;
   }
   changeColor('g', g);
-  val_G.innerHTML = g;
+  val_G.innerHTML = `00${g}`.slice(-3);
   progressG.style.width = `${Math.round(g / valFactor)}px`
 })
 
@@ -166,7 +166,7 @@ sliderB.addEventListener('wheel', (e) => {
     b += 1;
   }
   changeColor('b', b);
-  val_B.innerHTML = b;
+  val_B.innerHTML = `00${b}`.slice(-3);
   progressB.style.width = `${Math.round(b / valFactor)}px`
 })
 
