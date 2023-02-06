@@ -16,6 +16,7 @@ body {
 }
 
 canvas {
+	/* width: 800; */
 	/* border: 1px solid #ddd; */
 }
 
@@ -32,6 +33,7 @@ pre {
 	margin-top: 5%;
 	font-size: 1.4rem;
 }
+
 
 .container {
 	margin-top: 3%;
