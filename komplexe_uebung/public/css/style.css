@@ -1,0 +1,29 @@
+* {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  /* height: 100%; */
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #444;
+  color: #e9ae5f;
+}
+
+.choices-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+input[type='submit'] {
+  width: 10rem;
+  padding: 1rem;
+  font-size: 2rem;
+}
+
+.thumb {
+  width: 10rem;
+  border: 1px solid #ddd;
+}
