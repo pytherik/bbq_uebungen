@@ -17,8 +17,7 @@
               $choice = $_GET['choice'];
               switch ($choice) {
                 case 'raetsel1':
-                  echo '
-                  
+                  echo "
                   <table>
                     <caption>
                       <h1>Bilder Quiz</h1>
@@ -26,9 +25,9 @@
                     <tr>
                       <!-- row for images -->
                       <td>
-                        <img src="public/images/quest03.png" alt="Bilderrätsel 1" width="150">
-                        <img src="public/images/quest02.png" alt="Bilderrätsel 2" width="150">
-                        <img src="public/images/quest05.png" alt="Bilderrätsel 3" width="150">
+                        <img src='public/images/quest03.png' alt='pic 1' width='150'>
+                        <img src='public/images/quest02.png' alt='pic 2' width='150'>
+                        <img src='public/images/quest01.png' alt='pic 3' width='150'>
                       </td>
                     </tr>
                     <tr>
@@ -38,7 +37,7 @@
                       </td>
                     </tr>
                     <tr>
-                      <form method="POST">';
+                      <form method='POST'>";
                         //:  array all answers and solutions
                         $antworten = array(
                           ' Antwörd 1' => 'falsch',
@@ -59,14 +58,14 @@
                             </td>
                           </tr>";
                         }
-                    echo '
+                    echo "
                     <tr>
                       <td>
-                        <input type="submit" value="antworten">
+                        <input type='submit' value='antworten'>
                       </td>
                     </tr>
                     <tr>
-                      <td>';
+                      <td>";
                         //: evaluation if and what data is sent by POST
                         if ($_SERVER["REQUEST_METHOD"] == "POST") {
                           if (!array_key_exists('antwort_gruppe', $_POST)) {
@@ -79,20 +78,20 @@
                               echo "<h2>$inhalt 🍬 🍺 🍰</h2>";
                           }
                         }
-                        echo '
+                        echo "
                       </td>
                     </tr>
                     </form>
                   </table>
-                ';    
+                ";    
                 break;
                 case 'raetsel2':
                   echo "<h1>Rätsel 2</h1>";
-                  echo"<input type='submit' value='raetsel1'>";
+                  echo "<input type='submit' value='raetsel1'>";
                   break;
                 case 'raetsel3':
                   echo "<h1>Rätsel 3</h1>";
-                  echo"<input type='submit' value='raetsel1'>";
+                  echo "<input type='submit' value='raetsel1'>";
                   break;
                 default:
                   echo "<h1>NOPE</h1";
