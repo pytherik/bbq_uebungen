@@ -3,40 +3,160 @@ const container = document.querySelector('.slider-container');
 const progressR = document.querySelector('#red-value');
 const progressG = document.querySelector('#green-value');
 const progressB = document.querySelector('#blue-value');
-const progressT = document.querySelector('#trans-value');
+const progressA = document.querySelector('#alpha-value');
 
 const sliderR = document.querySelector('#red-shape');
 const sliderG = document.querySelector('#green-shape');
 const sliderB = document.querySelector('#blue-shape');
-const sliderT = document.querySelector('#trans-shape');
+const sliderA = document.querySelector('#alpha-shape');
+
+const rgba = document.querySelectorAll('.slider-value');
 
 const val_R = document.querySelector('#val_R');
 const val_G = document.querySelector('#val_G');
 const val_B = document.querySelector('#val_B');
-const val_T = document.querySelector('#val_T');
+const val_A = document.querySelector('#val_A');
 
+const display = document.querySelector('.display');
 const service = document.querySelector('.service');
 
 let r;
 let g;
 let b;
-let t = 255;
-
-const canv = document.getElementById("canv");
-let ctx = canv.getContext("2d");
+let a;
+let val;
+let m;
 
 const styles = window.getComputedStyle(container);
 
 const maxWidth = styles.width.slice(0, -2);
 const valFactor = 255 / maxWidth;
+const a_ValFactor = 100 / maxWidth;
 
 let sliderValue = 50;
-// 
+
 let mouseDownR = false;
 let mouseDownG = false;
 let mouseDownB = false;
-let mouseDownT = false;
+let mouseDownA = false;
 
+// rgba.forEach((col) => {
+//   col.addEventListener('click', (e) => {
+//     val = col.classList[1];
+//     e.preventDefault();
+//     sliderValue = Math.round(e.offsetX * valFactor);
+//     r = `00${sliderValue}`.slice(-3);
+//     changeColor(val, r);
+//     switch (val) {
+//       case 'r':
+//         val_R.innerHTML = "hallo red";
+//         progressR.style.width = `${e.offsetX}px`;
+//         break;
+//       case 'g':
+//         val_G.innerHTML = "hallo blue";
+//         progressG.style.width = `${e.offsetX}px`;
+//         break;
+//       case 'r':
+//         val_B.innerHTML = "hallo green";
+//         progressB.style.width = `${e.offsetX}px`;
+//         break;
+//     }
+//   });
+// })
+
+
+// //: MULTI click
+// `slider${m}`.addEventListener('click', (e) => {
+//   e.preventDefault();
+//   sliderValue = Math.round(e.offsetX * valFactor);
+//   r = `00${sliderValue}`.slice(-3);
+//   changeColor('r', r);
+//   val_R.innerHTML = r;
+//   progressR.style.width = `${e.offsetX}px`;
+// })
+
+// //: MULTI mousemove
+// `slider${m}`.addEventListener('mousedown', (e) => {
+//    mouseDownR = true;
+// })
+
+// `slider${m}`.addEventListener('mousemove', (e) => {
+//   e.preventDefault();
+//   if (mouseDownR == true) {
+//     sliderValue = Math.round(e.offsetX * valFactor);
+//     r = `00${sliderValue}`.slice(-3);
+//     changeColor('r', r);
+//     val_R.innerHTML = r;
+//     progressR.style.width = `${e.offsetX}px`;
+//   }
+// })
+
+// //: MULTI mouseup 
+// `slider${m}`.addEventListener('mouseup', () => {
+//   mouseDownR = false;
+// })
+
+// //: MULTI mousewheel
+// `slider${m}`.addEventListener('wheel', (e) => {
+//   // e.preventDefault();
+//   r = Math.round(parseInt(progressR.style.width.slice(0, -2)) * valFactor);
+  
+//   if (e.deltaY > 0 && r > 0) {
+//     r -= 1;
+//   } else if (e.deltaY < 0 && r < 255) {
+//     r += 1;
+//   }
+//   changeColor('r', r);
+//   val_R.innerHTML = `00${r}`.slice(-3);
+//   progressR.style.width = `${Math.round(r / valFactor)}px`
+// })
+
+
+//: TRANSPARENCY click
+sliderA.addEventListener('click', (e) => {
+  e.preventDefault();
+  sliderValue = Math.round(e.offsetX * a_ValFactor);
+  a = parseFloat(`00${sliderValue}`.slice(-3)) / 100;
+  changeColor('a', a);
+  val_A.innerHTML = a;
+  progressA.style.width = `${e.offsetX}px`;
+})
+
+//: TRANSPARENCY mousemove
+sliderA.addEventListener('mousedown', (e) => {
+  mouseDownA = true;
+})
+
+sliderA.addEventListener('mousemove', (e) => {
+ e.preventDefault();
+ if (mouseDownA == true) {
+   sliderValue = Math.round(e.offsetX * a_ValFactor);
+   a = sliderValue / 100;
+   changeColor('a', a);
+   val_A.innerHTML = a;
+   progressA.style.width = `${e.offsetX}px`;
+ }
+})
+
+//: TRANSPARENCY mouseup 
+sliderA.addEventListener('mouseup', () => {
+ mouseDownA = false;
+})
+
+//: TRANSPARENCY mousewheel
+sliderA.addEventListener('wheel', (e) => {
+  e.preventDefault();
+  a = Math.round(parseInt(progressA.style.width.slice(0, -2)) * a_ValFactor);
+  if (e.deltaY > 0 && a > 0) {
+    a -= 1;
+  } else if (e.deltaY < 0 && a < 100) {
+    a += 1;
+  }
+  val_A.innerHTML = `${(a / 100).toFixed(2)}00`.slice(0, 4);
+  progressA.style.width = `${Math.round(a / a_ValFactor)}px`
+  a = (a / 100).toFixed(2);
+  changeColor('a', a);
+})
 
 //: RED click
 sliderR.addEventListener('click', (e) => {
@@ -71,12 +191,12 @@ sliderR.addEventListener('mouseup', () => {
 
 //: RED mousewheel
 sliderR.addEventListener('wheel', (e) => {
-  e.preventDefault();
+  // e.preventDefault();
   r = Math.round(parseInt(progressR.style.width.slice(0, -2)) * valFactor);
   
-  if (e.deltaY == 120 && r > 0) {
+  if (e.deltaY > 0 && r > 0) {
     r -= 1;
-  } else if (r < 255) {
+  } else if (e.deltaY < 0 && r < 255) {
     r += 1;
   }
   changeColor('r', r);
@@ -118,12 +238,12 @@ sliderG.addEventListener('mouseup', () => {
 
 //: GREEN mousewheel
 sliderG.addEventListener('wheel', (e) => {
-  e.preventDefault();
+  // e.preventDefault();
   g = Math.round(parseInt(progressG.style.width.slice(0, -2)) * valFactor);
   
-  if (e.deltaY == 120 && g > 0) {
+  if (e.deltaY > 0 && g > 0) {
     g -= 1;
-  } else if (g < 255) {
+  } else if (e.deltaY < 0 && g < 255) {
     g += 1;
   }
   changeColor('g', g);
@@ -165,66 +285,18 @@ sliderB.addEventListener('mouseup', () => {
 
 //: BLUE mousewheel
 sliderB.addEventListener('wheel', (e) => {
-  e.preventDefault();
+  // e.preventDefault();
   b = Math.round(parseInt(progressB.style.width.slice(0, -2)) * valFactor);
   
-  if (e.deltaY == 120 && b > 0) {
+  if (e.deltaY > 0 && b > 0) {
     b -= 1;
-  } else if (b < 255) {
+  } else if (e.deltaY < 0 && b < 255) {
     b += 1;
   }
   changeColor('b', b);
   val_B.innerHTML = `00${b}`.slice(-3);
   progressB.style.width = `${Math.round(b / valFactor)}px`
 })
-
-
-//: TRANSPARENCY click
-sliderT.addEventListener('click', (e) => {
-  e.preventDefault();
-  sliderValue = Math.round(e.offsetX * valFactor);
-  t = `00${sliderValue}`.slice(-3);
-  changeColor('t', t);
-  val_T.innerHTML = t;
-  progressB.style.width = `${e.offsetX}px`;
-})
-
-//: T mousemove
-sliderT.addEventListener('mousedown', (e) => {
-   mouseDownT = true;
-})
-
-sliderT.addEventListener('mousemove', (e) => {
-  e.preventDefault();
-  if (mouseDownT == true) {
-    sliderValue = Math.round(e.offsetX * valFactor);
-    t = `00${sliderValue}`.slice(-3);
-    changeColor('t', t);
-    val_T.innerHTML = t;
-    progressT.style.width = `${e.offsetX}px`;
-  }
-})
-
-//: T mouseup
-sliderT.addEventListener('mouseup', () => {
-  mouseDownT = false;
-})
-
-//: T mousewheel
-sliderT.addEventListener('wheel', (e) => {
-  e.preventDefault();
-  t = Math.round(parseInt(progressT.style.width.slice(0, -2)) * valFactor);
-  
-  if (e.deltaY == 120 && t > 0) {
-    t -= 1;
-  } else if (t < 255) {
-    t += 1;
-  }
-  changeColor('t', t);
-  val_T.innerHTML = `00${t}`.slice(-3);
-  progressT.style.width = `${Math.round(t / valFactor)}px`
-})
-
 
 const changeColor = (color, val) => {
   switch (color) {
@@ -237,31 +309,25 @@ const changeColor = (color, val) => {
     case 'b':
       b = val;
       break;
-    case 't':
-      t = val;
+    case 'a':
+      a = val;
       break;
   }
-  
-  const xr = r.toString(16).slice(-2);
-  const xg = g.toString(16).slice(-2);
-  const xb = b.toString(16).slice(-2);
-  const xt = t.toString(16).slice(-2);
-  
-  t = (t / 255).toFixed(2);
 
-  console.log(t, typeof (t));
-  ctx.beginPath();
-  ctx.rect(0, 0, 800, 500);
-  ctx.fillStyle = (`rgba(${r}, ${g}, ${b}, ${t})`);
-  ctx.fill();
-  service.innerHTML = `rgba(${r}, ${g}, ${b}, ${t})            #${xr}${xg}${xb}${xt}`
+  const xr = parseInt(r).toString(16).slice(-2);
+  const xg = parseInt(g).toString(16).slice(-2);
+  const xb = parseInt(b).toString(16).slice(-2);
+  const xa = `0${parseInt(a * 255).toString(16)}`.slice(-2);
+
+  display.style.backgroundColor = `rgba(${r}, ${g}, ${b}, ${a}`;
+  service.innerHTML = `rgba(${r}, ${g}, ${b}, ${a})   #${xr}${xg}${xb}${xa}`
 }
 
 (() => {
   r = Math.floor(Math.random() * 256);
   g = Math.floor(Math.random() * 256);
   b = Math.floor(Math.random() * 256);
-  t = Math.floor(Math.random() * 256);
+  a = 1.00;
   
   changeColor('r', r);
   val_R.innerHTML = `00${r}`.slice(-3);
@@ -275,8 +341,8 @@ const changeColor = (color, val) => {
   val_B.innerHTML = `00${b}`.slice(-3);
   progressB.style.width = `${b / valFactor}px`;
 
-  changeColor('t', t);
-  val_T.innerHTML = `00${t}`.slice(-3);
-  progressT.style.width = `${t / valFactor}px`;
-
+  changeColor('a', a);
+  val_A.innerHTML = `${a.toFixed(2)}`;
+  progressA.style.width = `${a / a_ValFactor * 100}px`;
+  
 })()

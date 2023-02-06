@@ -5,19 +5,21 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="css/style.css" rel="stylesheet" type="text/css" />
-  <link href="images/icons/favicon/favicon.ico" rel="icon" />
-  <title></title>
+  <link href="images/favicon.ico" rel="icon" />
+  <title>customColSlide</title>
 </head>
 <body>
   <div class="container">
-    <canvas id="canv" width="800" height="500"></canvas>
+    <div class="display">
+    </div>
+    <!-- <canvas id="canv" width="300" height="300"></canvas> -->
     <div class="sliders">
       <div id="slider1" class="slider-container">
         <div>
           <pre>Red  : <span id="val_R"></span></pre>
         </div>
         <div id="red-shape" class="slider-shape">
-          <div id="red-value" class="slider-value">
+          <div id="red-value" class="slider-value r">
           </div>    
         </div>
       </div>
@@ -26,7 +28,7 @@
           <pre>Green: <span id="val_G"></span></pre>
         </div>
         <div id="green-shape" class="slider-shape">
-          <div id="green-value" class="slider-value">
+          <div id="green-value" class="slider-value g">
           </div>    
         </div>
       </div>
@@ -35,16 +37,16 @@
           <pre>Blue : <span id="val_B"></span></pre>
         </div>
         <div id="blue-shape" class="slider-shape">
-          <div id="blue-value" class="slider-value">
+          <div id="blue-value" class="slider-value b">
           </div>    
         </div>
       </div>
       <div id="slider4" class="slider-container">
         <div>
-          <pre>Transparency : <span id="val_T"></span></pre>
+          <pre>Transparency : <span id="val_A"></span></pre>
         </div>
-        <div id="trans-shape" class="slider-shape">
-          <div id="trans-value" class="slider-value">
+        <div id="alpha-shape" class="slider-shape">
+          <div id="alpha-value" class="slider-value a">
           </div>    
         </div>
       </div>
