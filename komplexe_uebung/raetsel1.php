@@ -1,4 +1,4 @@
-
+<div class="container">
 <table>
 <caption>
   <h1>Bilder Quiz</h1>
@@ -6,9 +6,9 @@
 <tr>
   <!-- row for images -->
   <td>
-    <img src='public/images/quest03.png' alt='pic 1' width='150'>
-    <img src='public/images/quest02.png' alt='pic 2' width='150'>
-    <img src='public/images/quest01.png' alt='pic 3' width='150'>
+    <img class='pic' src='public/images/quest03.png' alt='pic 1'>
+    <img class='pic' src='public/images/quest02.png' alt='pic 2'>
+    <img class='pic' src='public/images/quest01.png' alt='pic 3'>
   </td>
 </tr>
 <tr>
@@ -18,7 +18,7 @@
   </td>
 </tr>
 <tr>
-  <form method='POST'>;
+  <form method='POST'>
 
 <?php
 
@@ -36,18 +36,17 @@
       echo "
       <tr>
         <td>
-          <label>
-            <input type='radio' name=$name value=$value>$key 
-          </label> 
+          <label>$key</label>
+            <input type='radio' name=$name value=$value> 
+           
         </td>
       </tr>";
     }
-
 ?>
 
 <tr>
   <td>
-    <input type='submit' value='antworten'>
+    <button  type='submit'>antworten</button>
   </td>
 </tr>
 <tr>
@@ -72,4 +71,4 @@
 </tr>
 </form>
 </table>
-
+</div>
