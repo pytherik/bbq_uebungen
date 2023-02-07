@@ -314,9 +314,9 @@ const changeColor = (color, val) => {
       break;
   }
 
-  const xr = parseInt(r).toString(16).slice(-2);
-  const xg = parseInt(g).toString(16).slice(-2);
-  const xb = parseInt(b).toString(16).slice(-2);
+  const xr = `0${parseInt(r).toString(16)}`.slice(-2);
+  const xg = `0${parseInt(g).toString(16)}`.slice(-2);
+  const xb = `0${parseInt(b).toString(16)}`.slice(-2);
   const xa = `0${parseInt(a * 255).toString(16)}`.slice(-2);
 
   display.style.backgroundColor = `rgba(${r}, ${g}, ${b}, ${a}`;
