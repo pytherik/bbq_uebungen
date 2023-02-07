@@ -11,7 +11,7 @@ body {
   color: #e9ae5f;
 }
 table {
-  border: 1px solid #EDDBC7;
+  border: 1px solid #eddbc7;
   font-size: 1.5rem;
 }
 
@@ -27,7 +27,8 @@ p {
   margin: 1rem 0;
 }
 
-.container, .green-container {
+.container,
+.green-container {
   font-size: 2rem;
   width: 500px;
   margin-top: 5%;
@@ -92,11 +93,11 @@ input[type="checkbox"] {
 
 input[type="radio"] {
   font-size: 1.2rem;
-  padding: 0 .4rem;
-  border-radius: .4rem;
+  padding: 0 0.4rem;
+  border-radius: 0.4rem;
 }
 
-input[type='submit'] {
+input[type="submit"] {
   width: 10rem;
   padding: 1rem;
   font-size: 2rem;

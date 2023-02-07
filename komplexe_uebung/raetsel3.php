@@ -8,7 +8,7 @@
             <input type="text" name="word" placeholder="Passwort" required autocomplete="off" autofocus>      
           </div>
           <div class="check-input">
-            <button id="pwbutton" type="submit">Ich glaub so gehts!</button>
+            <button id="pwbutton" type="submit">so isses</button>
           </div>
         </form>
     </div>
