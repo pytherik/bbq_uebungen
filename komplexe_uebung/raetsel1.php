@@ -31,19 +31,22 @@
     );
     //: name variable for data-transfer in $_POST  
     $name = 'antwort_gruppe';
+
     //: create html table rows for answers
     foreach ($antworten as $key => $value) {
       echo "
       <tr>
         <td>
           <label>$key</label>
+          </td>
+          <td>
             <input type='radio' name=$name value=$value> 
-           
+         
         </td>
       </tr>";
     }
 ?>
-
+</tr>
 <tr>
   <td>
     <button  type='submit'>antworten</button>
